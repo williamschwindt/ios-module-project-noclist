@@ -16,11 +16,6 @@ Here is the complete NOC List. This information is classified at the highest lev
  * coverName: "Claire Phelps", realName: "Emmanuelle Beart", accessLevel: 5, compromised: false
  * coverName: "Eugene Kittridge", realName: "Henry Czerny", accessLevel: 10, compromised: true
  * coverName: "Franz Krieger", realName: "Jean Reno", accessLevel: 4, compromised: false
- * coverName: "Luther Stickell", realName: "Ving Rhames", accessLevel: 4, compromised: false
- * coverName: "Sarah Davies", realName: "Kristin Scott Thomas", accessLevel: 5, compromised: true
- * coverName: "Max RotGrab", realName: "Vanessa Redgrave", accessLevel: 4, compromised: false
- * coverName: "Hannah Williams", realName: "Ingeborga Dapkūnaitė", accessLevel: 5, compromised: true
- * coverName: "Jack Harmon", realName: "Emilio Estevez", accessLevel: 6, compromised: true
  * coverName: "Frank Barnes", realName: "Dale Dye", accessLevel: 9, compromised: false
  
  ---
@@ -29,22 +24,32 @@ This message will self destruct in 5 seconds.
 */
 //: ## Step 1
 //: Create constants for each of the above agents and store all their information in a tuple.
+let ethanHunt = (realName: "tom cruise", accessLevel: 8, compromised: false)
 
+let jimPhelps = (realName: "jon voight", accessLevel: 9, compromised: true)
 
 
 //: ## Step 2
 //: Place the above constants inside an array. Declare this array as a constant as well.
-
+let nocList = [ethanHunt, jimPhelps]
 
 
 //: ## Step 3
 //: Create a function that calculates the total number of compromised agents. Inside the function, iterate over the array of agents to determine which ones are compromised. Return the total count.
-
+var count: Int = 0
+func comp() -> Int {
+    for item in nocList {
+        if item.compromised == true {
+            count += 1
+        }
+    }
+    return count
+}
 
 
 //: ## Step 4
 //: Call the above function to find the total number of compromised agents and then print a sentence that says "# agents have been compromised!" using string interpolation.
-
+print("\(comp()) agents have been compromised!")")
 
 
 //: ## Step 5
