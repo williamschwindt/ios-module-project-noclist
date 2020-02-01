@@ -24,9 +24,9 @@ This message will self destruct in 5 seconds.
 */
 //: ## Step 1
 //: Create constants for each of the above agents and store all their information in a tuple.
-let ethanHunt = (realName: "tom cruise", accessLevel: 8, compromised: false)
+let ethanHunt = (coverName: "Ethan Hunt", realName: "tom cruise", accessLevel: 8, compromised: false)
 
-let jimPhelps = (realName: "jon voight", accessLevel: 9, compromised: true)
+let jimPhelps = (coverName: "Jim Phelps", realName: "jon voight", accessLevel: 9, compromised: true)
 
 
 //: ## Step 2
@@ -49,28 +49,45 @@ func comp() -> Int {
 
 //: ## Step 4
 //: Call the above function to find the total number of compromised agents and then print a sentence that says "# agents have been compromised!" using string interpolation.
-print("\(comp()) agents have been compromised!")")
+print("\(comp()) agents have been compromised!")
 
 
 //: ## Step 5
 //: Create a function called "findCleanAgents" that both prints the cover names of all uncompromised agents, as well as returns an array of agents that are uncompromised.
-
+func findCleanAgents() -> [String] {
+  var people: [String] = []
+    for item in nocList {
+        if item.compromised == false {
+            print(item.coverName)
+            people.append(item.coverName)
+        }
+    }
+    return people
+}
 
 
 //: ## Step 6
 //: Call the above function to find the total number of clean agents and print a message that says "# clean agents out of # total agents." Use the total number of agents in the array from step 2 as the second number in the string.
-
+print("\(findCleanAgents().count) clean agents out of \(nocList.count) total agents.")
 
 
 //: ## Step 7
 //: Create a function called "findHighRisk" that prints out the real names and access levels of agents with level 8 or higher. If one of these agents is also currently compromised, add `**WARNING** **COMPROMISED**` to the end of the string that includes their name and access level.
 //: - Example: `Jon Voight, level: 9 **WARNING** **COMPROMISED**`
-
+func findHighRisk() {
+  for item in nocList {
+    if item.accessLevel > 7 && item.compromised == false {
+      print("\(item.realName), level: \(item.accessLevel)")
+    } else if item.accessLevel > 7 && item.compromised == true {
+      print("\(item.realName), level: \(item.accessLevel) **WARNING** **COMPROMISED**")
+    }
+  }
+}
 
 
 //: ## Step 8
 //: Call the above function and check the output in the console to ensure it is functioning properly.
-
+findHighRisk()
 
 
 //: ## Step 9
